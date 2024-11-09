@@ -2,13 +2,25 @@
     --container-width: 1440px;
 }
 
-/* General Styles */
-body {
-    font-family: Inter, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+}
+
+/* General Styles */
+body {
+    width: 100vw;
+    font-family: Inter, sans-serif;
+    background-color: #ffffff;
     color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Header */
@@ -60,6 +72,81 @@ nav a {
 .call-button a {
     color: #ffffff;
     text-decoration: none;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1001;
+    padding: 5px;
+}
+
+.burger-menu div {
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.burger-menu.active div {
+    background-color: #4a5a39;
+}
+
+.burger-menu.active div:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger-menu.active div:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.burger-menu.active div:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+nav.menu-open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Keeps the menu fixed in the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-color: #ffffff; /* Background color for visibility */
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+nav.menu-open a {
+    margin: 10px 0; /* Space between links */
+    font-size: 1.5rem; /* Larger font size for visibility */
+    color: #333; /* Text color */
+    text-decoration: none;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    width: 1200px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
 }
 
 /* Logo Section */
@@ -247,82 +334,6 @@ nav a {
     width: 100%;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    nav a {
-        margin: 0 15px;
-        font-size: 14px;
-    }
-
-    .call-button {
-        margin-top: 10px;
-    }
-
-    .info-line {
-        flex-direction: column;
-        gap: 10px;
-        font-size: 18px;
-    }
-
-    .testimonial-section h2 {
-        font-size: 24px;
-    }
-
-    .testimonial-card {
-        padding: 15px;
-    }
-
-    .footer {
-        flex-direction: column;
-        height: auto;
-        text-align: center;
-        padding: 30px 10px;
-    }
-
-    .footer-left, .footer-right {
-        margin: 0;
-        font-size: 16px;
-    }
-
-    .footer-right {
-        text-align: center;
-        line-height: 1.5;
-        margin-top: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .info-line {
-        font-size: 16px;
-    }
-
-    .testimonial-section p,
-    .testimonial-text {
-        font-size: 14px;
-    }
-
-    .contact-card p {
-        font-size: 20px;
-    }
-
-    .profile-container img {
-        width: 90%;
-    }
-
-    .testimonial-header h3 {
-        font-size: 18px;
-    }
-
-    .footer-left, .footer-right {
-        font-size: 14px;
-    }
-}
-
 .gh-foot {
     padding-top: clamp(8rem, 4.55vw + 6.18rem, 12rem);
     padding-bottom: clamp(8rem, 4.55vw + 6.18rem, 12rem);
@@ -464,3 +475,99 @@ nav a {
         font-size: 14px; 
     }
   }
+
+
+
+  @media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .header-left,
+    .header-right {
+        flex: 1;
+    }
+
+    .info-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-section {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 10px;
+    }
+
+    header img {
+        height: 20px;
+        width: auto;
+    }
+
+    .call-button {
+        padding: 8px 16px;
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .banner p {
+        font-size: 0.8rem;
+    }
+
+    .logo-section img {
+        width: 250px;
+    }
+
+    .info-line {
+        gap: 10px;
+        font-size: 0.7rem;
+    }
+
+    .contact-section {
+        width: 100%;
+    }
+
+    .contact-card p {
+        font-size: 1.2rem;
+    }
+
+    .profile-container img {
+        width: 200px;
+    }
+
+    .testimonial-section {
+        width: 100%;
+    }
+
+    .gh-foot {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .gh-outer {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
