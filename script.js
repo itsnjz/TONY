@@ -5,7 +5,7 @@ function toggleMenu() {
     burgerMenu.classList.toggle("active");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
     const lazyImages = document.querySelectorAll(".lazy-load");
   
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
       imageObserver.observe(img);
     });
   });
-  
+   */
