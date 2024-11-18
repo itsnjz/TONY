@@ -793,10 +793,42 @@ nav.menu-open a {
     }
 }
 
-.lazy-load {
-    opacity: 0;
-    transition: opacity 0.5s;
+.blurred-img {
+    background-image: url(images/1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-  .lazy-load.loaded {
+
+  .blurred-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: pulse 2.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .blurred-img.loaded::before {
+    animation: none;
+    content: none;
+  }
+  
+  .blurred-img img {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+  }
+  
+  .blurred-img.loaded img {
     opacity: 1;
   }

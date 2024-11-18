@@ -5,22 +5,18 @@ function toggleMenu() {
     burgerMenu.classList.toggle("active");
 }
 
-/* document.addEventListener("DOMContentLoaded", function () {
-    const lazyImages = document.querySelectorAll(".lazy-load");
+const blurredImageDivs = document.querySelectorAll(".blurred-img");
+
+blurredImageDivs.forEach(blurredImageDiv => {
+  const img = blurredImageDiv.querySelector("img");
   
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.onload = () => img.classList.add("loaded");
-          observer.unobserve(img);
-        }
-      });
-    });
-  
-    lazyImages.forEach((img) => {
-      imageObserver.observe(img);
-    });
-  });
-   */
+  function loaded() {
+    blurredImageDiv.classList.add("loaded");
+  }
+
+  if (img.complete) {
+    loaded();
+  } else {
+    img.addEventListener("load", loaded);
+  }
+});
