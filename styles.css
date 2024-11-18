@@ -793,3 +793,10 @@ nav.menu-open a {
     }
 }
 
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .lazy-load.loaded {
+    opacity: 1;
+  }
